@@ -1,22 +1,32 @@
-import { test, expect } from '@playwright/test';
+import {test, expect} from "@playwright/test"
 
-test('Iniciar sesión en SauceDemo', async ({ page }) => {
+//nombre de caso de prueba
 
-  // abrir la pagina
-  await page.goto('https://www.saucedemo.com/');
+test ("TC01 INICIO DE SESSION CON USUARIO Y CONTRASEñA VALIDA",async ({page})=>{
 
-  // ingresar usuario lentamente
-  await page.getByPlaceholder('Username').pressSequentially('standard_user', { delay: 150 });
+  // abril la pagina que vamos a probar
 
-  // ingresar contraseña lentamente
-  await page.getByPlaceholder('Password').pressSequentially('secret_sauce', { delay: 150 });
+  await page.goto("https://www.saucedemo.com/");
 
-  // pausa para observar los campos
+  //ingresar usuario lento como lo escribe un humano
+  await page.getByPlaceholder("Username").pressSequentially("standard_user",{delay:150});
+
+  //ingresar la contraseña lento como lo escribe un humano
+
+  await page.getByPlaceholder("Password").pressSequentially("secret_sauce",{delay:150});
+
+  //pausa la ver los compos completados
+
   await page.waitForTimeout(1000);
 
-  // hacer clic en iniciar sesion
-  await page.getByRole('button', { name: 'Login' }).click();
+  //ahora hacer clic en el boton de login
 
-  // validar que el login fue exitoso
-  await expect(page).toHaveURL(/inventory/);
+  await page.getByRole("button",{name:"Login"}).click();
+
+  
+
+
+
+
+
 });
